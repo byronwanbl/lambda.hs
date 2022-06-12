@@ -1,0 +1,8 @@
+# haskell
+.stack-work
+*.cabal
+stack.yaml
+stack.yaml.lock
+
+# vscode
+.vscode

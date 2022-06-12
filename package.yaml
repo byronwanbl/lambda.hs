@@ -1,0 +1,51 @@
+name: lambda-calc
+version: 0.1.0.0
+github: "byronwanbl/lambda-calc"
+license: BSD3
+author: "ByronWan"
+maintainer: "byronwan@example.com"
+copyright: "2022 ByronWan here"
+
+extra-source-files:
+  - readme.md
+  - changelog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: "Lambda calculus calculator in haskell"
+
+dependencies:
+  - base >= 4.7 && < 5
+  - parsec
+  - unordered-containers
+  - hashable
+
+library:
+  source-dirs: src
+
+executables:
+  lambda-calc-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - lambda-calc
+
+tests:
+  lambda-calc-test:
+    main: Main.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - lambda-calc
