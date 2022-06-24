@@ -1,9 +1,9 @@
-name: lambda-calc
+name: lambda-hs
 version: 0.1.0.0
-github: "byronwanbl/lambda-calc"
+github: "byronwanbl/lambda-hs"
 license: BSD3
 author: "ByronWan"
-maintainer: "byronwan@example.com"
+maintainer: "byronwan@outlook.com"
 copyright: "2022 ByronWan here"
 
 extra-source-files:
@@ -22,14 +22,12 @@ description: "Lambda calculus calculator in haskell"
 dependencies:
   - base >= 4.7 && < 5
   - parsec
-  - unordered-containers
-  - hashable
 
 library:
   source-dirs: src
 
 executables:
-  lambda-calc-exe:
+  lambda-hs-exe:
     main: Main.hs
     source-dirs: app
     ghc-options:
@@ -37,10 +35,12 @@ executables:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - lambda-calc
+      - lambda-hs
+      - unordered-containers
+      - hashable
 
 tests:
-  lambda-calc-test:
+  lambda-hs-test:
     main: Main.hs
     source-dirs: test
     ghc-options:
@@ -48,4 +48,4 @@ tests:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - lambda-calc
+      - lambda-hs
