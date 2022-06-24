@@ -1,11 +1,6 @@
 module Lambda.Lambda (Identifier (..), Expr (..), simplify, apply, replace) where
 
-import Data.Hashable (Hashable (hashWithSalt))
-
 newtype Identifier = Identifier String deriving (Eq, Show)
-
-instance Hashable Identifier where
-  hashWithSalt i (Identifier x) = hashWithSalt i x
 
 data Expr
   = Id Identifier

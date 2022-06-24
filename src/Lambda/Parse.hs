@@ -1,4 +1,4 @@
-module Lambda.Parse (parseRoot, parseMain) where
+module Lambda.Parse (parseExpr, parseId) where
 
 import Data.Function ((&))
 import Data.Functor ((<&>))
@@ -6,8 +6,8 @@ import Lambda.Lambda (Expr (..), Identifier (..))
 import Text.ParserCombinators.Parsec (Parser, alphaNum, char, letter, many1, parse, satisfy, skipMany1, space, spaces, try, (<|>))
 import Text.ParserCombinators.Parsec.Combinator (choice, eof)
 
-parseRoot :: Parser Expr
-parseRoot = parseApply
+parseExpr :: Parser Expr
+parseExpr = parseApply
 
 parseId :: Parser Identifier
 parseId =
@@ -28,7 +28,7 @@ parseFunc = do
   param <- many1 parseId
   spaces
   char '.'
-  expr <- parseRoot
+  expr <- parseExpr
   return (foldr Func expr param)
 
 parseAtom :: Parser Expr
@@ -37,7 +37,7 @@ parseAtom =
     ( do
         char '('
         spaces
-        expr <- parseRoot
+        expr <- parseExpr
         spaces
         char ')'
         return expr
@@ -54,11 +54,3 @@ parseApply =
         return (foldl Apply func a)
     )
     <|> parseAtom
-
-parseMain :: String -> Expr
-parseMain s = parse param "" s & either (\expr -> error ("Parse failed: " <> show expr)) id
-  where
-    param = do
-      expr <- parseRoot
-      eof
-      return expr

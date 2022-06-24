@@ -1,4 +1,4 @@
-module Lambda.Show (showExpr) where
+module Lambda.Show (showExpr, showId) where
 
 import Data.Function ((&))
 import Data.Functor ((<&>))
