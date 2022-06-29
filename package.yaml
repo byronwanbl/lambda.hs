@@ -4,7 +4,7 @@ github: "byronwanbl/lambda-hs"
 license: BSD3
 author: "ByronWan"
 maintainer: "byronwan@outlook.com"
-copyright: "2022 ByronWan here"
+copyright: "2022 ByronWan here."
 
 extra-source-files:
   - readme.md
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description: "Lambda calculus calculator in haskell"
+description: "Lambda calculus calculator in haskell."
 
 dependencies:
   - base >= 4.7 && < 5
@@ -38,6 +38,8 @@ executables:
       - lambda-hs
       - unordered-containers
       - hashable
+      - raw-strings-qq
+      - isocline
 
 tests:
   lambda-hs-test:
