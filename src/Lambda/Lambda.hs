@@ -8,14 +8,19 @@ data Expr
   | Apply Expr Expr
   deriving (Eq, Show)
 
-simplify :: Expr -> Expr
-simplify expr@(Id _) = expr
-simplify (Func id expr) = Func id (simplify expr)
-simplify (Apply func expr) = apply (simplify func) (simplify expr)
+simplify :: Expr -> Maybe Expr
+simplify expr@(Id _) = Just expr
+simplify (Func id expr) = do
+  expr' <- simplify expr
+  Just (Func id expr)
+simplify (Apply func expr) = do
+  func' <- simplify func
+  expr' <- simplify expr
+  apply func' expr'
 
-apply :: Expr -> Expr -> Expr
-apply (Func v b) expr = replace v expr b
-apply _ _ = error "Can only `apply` a function"
+apply :: Expr -> Expr -> Maybe Expr
+apply (Func v b) expr = Just (replace v expr b)
+apply _ _ = Nothing
 
 replace :: Identifier -> Expr -> Expr -> Expr -- old, new, src -> src[old := new]
 replace old new (Id id)
