@@ -28,8 +28,8 @@ logo =
 usage :: String
 usage = 
   [r|
-Read <baike.baidu.com/item/%CE%BB%E6%BC%94%E7%AE%97> or <zh.wikipedia.org/%CE%BB%E6%BC%94%E7%AE%97>
-to know more about **Lambda calculus**.
+Read <https://baike.baidu.com/item/%CE%BB%E6%BC%94%E7%AE%97> or <https://zh.wikipedia.org/%CE%BB%E6%BC%94%E7%AE%97>
+to know more about **lambda calculus**.
 
 Usage:
   `<expression>`         Calculate (simplify) the expression.
