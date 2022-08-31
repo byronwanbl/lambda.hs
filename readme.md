@@ -5,6 +5,16 @@ Lambda calculus calculator in haskell.
 Read <https://baike.baidu.com/item/%CE%BB%E6%BC%94%E7%AE%97> or <https://zh.wikipedia.org/%CE%BB%E6%BC%94%E7%AE%97>
 to know more about **lambda calculus**.
 
+## Installation
+
+It builds by stack.
+
+```bash
+git clone github.com/byronwanbl/lambda.hs
+cd lambda.hs
+stack run
+```
+
 ## Example
 
 ``` plain
